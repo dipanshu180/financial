@@ -12,7 +12,7 @@ services = AnalyticsService()
 async def get_summary(
     session: AsyncSession = Depends(get_session),
     _: dict = Depends(AccessTokenBearer()),
-    current_user = Depends(RoleChecker(allowed_roles=["user", "analyst", "admin"]))
+    current_user = Depends(RoleChecker(allowed_roles=[ "analyst", "admin"]))
 ):
     return await services.get_summary(session)
 
@@ -20,7 +20,7 @@ async def get_summary(
 async def get_by_category(
     session: AsyncSession = Depends(get_session),
     _: dict = Depends(AccessTokenBearer()),
-    current_user = Depends(RoleChecker(allowed_roles=["user", "analyst", "admin"]))
+    current_user = Depends(RoleChecker(allowed_roles=[ "analyst", "admin"]))
 ):
     return await services.get_category_breakdown(session)
 
@@ -28,7 +28,7 @@ async def get_by_category(
 async def get_monthly(
     session: AsyncSession = Depends(get_session),
     _: dict = Depends(AccessTokenBearer()),
-    current_user = Depends(RoleChecker(allowed_roles=["user", "analyst", "admin"]))
+    current_user = Depends(RoleChecker(allowed_roles=["analyst", "admin"]))
 ):
     return await services.get_monthly_totals(session)
 
@@ -37,7 +37,7 @@ async def get_recent(
     limit: int = Query(default=5, le=20),
     session: AsyncSession = Depends(get_session),
     _: dict = Depends(AccessTokenBearer()),
-    current_user = Depends(RoleChecker(allowed_roles=["user", "analyst", "admin"]))
+    current_user = Depends(RoleChecker(allowed_roles=["analyst", "admin"]))
 ):
     if limit < 1 or limit > 20:
         raise InvalidLimitValue()

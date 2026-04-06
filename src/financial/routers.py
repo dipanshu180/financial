@@ -65,7 +65,7 @@ async def get_transaction(transaction_id: str , session :AsyncSession  = Depends
 async def create_transaction(user: TransactionCreate , session :AsyncSession = Depends(get_session),
                              _: dict = Depends(access_token_bearer),
                              current_user = Depends(get_current_user),
-                             role = Depends(RoleChecker(allowed_roles=["admin","user"]))):
+                             role = Depends(RoleChecker(allowed_roles=["admin"]))):
     
     new_transaction = await services.create_transaction(session , user)
     return new_transaction   
@@ -75,7 +75,7 @@ async def create_transaction(user: TransactionCreate , session :AsyncSession = D
 async def update_transaction(transaction_id: str, transaction_data: TransactionUpdate, session: AsyncSession = Depends(get_session),
                              _: dict = Depends(access_token_bearer),
                              current_user = Depends(get_current_user),
-                             role = Depends(RoleChecker(allowed_roles=["admin","user"]))):
+                             role = Depends(RoleChecker(allowed_roles=["admin"]))):
     
     transaction = await services.update_transaction(session, transaction_id, transaction_data)
     if not transaction:
