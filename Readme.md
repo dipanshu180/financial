@@ -98,10 +98,10 @@ DELETE /api/v1/financial/transactions/{id} (Admin)
 
 ## Analytics Endpoints
 
-GET /api/v1/analytics/summary (Viewer, Analyst, Admin)\
-GET /api/v1/analytics/by-category (Viewer, Analyst, Admin)\
-GET /api/v1/analytics/monthly (Viewer, Analyst, Admin)\
-GET /api/v1/analytics/recent (Viewer, Analyst, Admin)
+GET /api/v1/analytics/summary (Analyst, Admin)\
+GET /api/v1/analytics/by-category (Analyst, Admin)\
+GET /api/v1/analytics/monthly (Analyst, Admin)\
+GET /api/v1/analytics/recent (Analyst, Admin)
 
 ------------------------------------------------------------------------
 
